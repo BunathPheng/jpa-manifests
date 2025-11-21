@@ -1,0 +1,25 @@
+---
+# Source: helm for kubernetes/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jpa
+  labels:
+    app: jpa
+spec:
+  replicas: 1
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: jpa
+  template:
+    metadata:
+      labels:
+        app: jpa
+    spec:
+      containers:
+        - name: jpa
+          image: docker.io/phengbunath/jpa:1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
